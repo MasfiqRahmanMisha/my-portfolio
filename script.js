@@ -141,3 +141,127 @@ tabBtns.forEach(btn => {
     });
 
 });
+
+// =========================
+// IMAGE VIEWER
+// =========================
+
+const viewer =
+document.getElementById("imageViewer");
+
+const viewerImg =
+document.getElementById("viewerImg");
+
+const closeViewer =
+document.getElementById("closeViewer");
+
+document
+.querySelectorAll(".view-image")
+.forEach(img => {
+
+    img.addEventListener("click", () => {
+
+        viewer.classList.add("active");
+
+        viewerImg.src = img.src;
+
+    });
+
+});
+
+// CLOSE
+
+closeViewer.addEventListener("click", () => {
+
+    viewer.classList.remove("active");
+
+});
+
+// CLICK OUTSIDE
+
+viewer.addEventListener("click", (e) => {
+
+    if(e.target === viewer){
+
+        viewer.classList.remove("active");
+
+    }
+
+});
+
+/*
+// =========================
+// COMMENT SYSTEM
+// =========================
+
+const commentInput = document.getElementById("commentInput");
+const commentBtn = document.getElementById("commentBtn");
+const commentList = document.getElementById("commentList");
+
+// Load saved comments
+
+window.addEventListener("DOMContentLoaded", loadComments);
+
+// Add comment
+
+commentBtn.addEventListener("click", () => {
+
+    const commentText = commentInput.value.trim();
+
+    if(commentText === "") return;
+
+    addComment(commentText);
+
+    saveComment(commentText);
+
+    commentInput.value = "";
+
+});
+
+// Add comment to UI
+
+function addComment(text){
+
+    const div = document.createElement("div");
+
+    div.classList.add("comment-item");
+
+    div.innerHTML = `<p>${text}</p>`;
+
+    commentList.prepend(div);
+
+}
+
+// Save to LocalStorage
+
+function saveComment(text){
+
+    let comments =
+        JSON.parse(localStorage.getItem("comments"))
+        || [];
+
+    comments.push(text);
+
+    localStorage.setItem(
+        "comments",
+        JSON.stringify(comments)
+    );
+
+}
+
+// Load comments
+
+function loadComments(){
+
+    let comments =
+        JSON.parse(localStorage.getItem("comments"))
+        || [];
+
+    comments.forEach(comment => {
+
+        addComment(comment);
+
+    });
+
+}
+    */
