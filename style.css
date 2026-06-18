@@ -662,29 +662,22 @@ body{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
+    align-items:start;
 }
 
-.gallery-card{
+.gallery-card,
+.gallery-card-Normal{
+    height:600px; /* সব card same height */
     overflow:hidden;
-    border-radius:20px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+    border-radius:24px;
 }
 
 .gallery-card img,
 .gallery-card-Normal img{
     width:100%;
-    object-fit:contain;
+    height:100%;
+    object-fit:contain; /* পুরো image দেখা যাবে */
     background:#fff;
-    display:block;
-    transition:0.3s;
-}
-
-.gallery-card img{
-    height:320px;
-}
-
-.gallery-card-Normal img{
-    height:590px;
 }
 
 .gallery-card:hover img{
