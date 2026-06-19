@@ -38,9 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // DOWNLOAD CV
 
 document.getElementById('downloadCVBtn')
-.addEventListener('click', (e) => {
-
-    e.preventDefault();
+?.addEventListener('click', (e) => {
 
     alert("Masfiq's CV is downloading...");
 
@@ -82,10 +80,22 @@ document.querySelectorAll(
 // PROJECT FILTER
 
 const tabBtns = document.querySelectorAll(".tab-btn");
-
 const projectCards = document.querySelectorAll(".project-card");
-
 const galleries = document.querySelectorAll(".gallery-section");
+
+// ✅ FIX: Page load-এ galleries initially hide করো
+galleries.forEach(gallery => {
+    gallery.style.display = "none";
+});
+
+// ✅ FIX: Page load-এ "Full Project" active থাকলে frontend cards দেখাও
+projectCards.forEach(card => {
+    if (card.classList.contains("frontend")) {
+        card.style.display = "block";
+    } else {
+        card.style.display = "none";
+    }
+});
 
 tabBtns.forEach(btn => {
 
@@ -100,21 +110,21 @@ tabBtns.forEach(btn => {
         const filter = btn.dataset.filter;
 
         // hide all cards
-        projectCards.forEach(card=>{
+        projectCards.forEach(card => {
             card.style.display = "none";
         });
 
         // hide all galleries
-        galleries.forEach(gallery=>{
+        galleries.forEach(gallery => {
             gallery.style.display = "none";
         });
 
-        // show frontend projects
-        if(filter === "all" || filter === "frontend"){
+        // ✅ Full Project — frontend cards দেখাও
+        if (filter === "all" || filter === "frontend") {
 
-            projectCards.forEach(card=>{
+            projectCards.forEach(card => {
 
-                if(card.classList.contains("frontend")){
+                if (card.classList.contains("frontend")) {
                     card.style.display = "block";
                 }
 
@@ -122,18 +132,18 @@ tabBtns.forEach(btn => {
 
         }
 
-        // show app ui gallery
-        if(filter === "app-ui"){
+        // ✅ App UI gallery দেখাও
+        if (filter === "app-ui") {
 
-            document.querySelector(".app-ui")
+            document.querySelector(".gallery-section.app-ui")
             .style.display = "block";
 
         }
 
-        // show design gallery
-        if(filter === "design-ui"){
+        // ✅ Normal Design gallery দেখাও
+        if (filter === "design-ui") {
 
-            document.querySelector(".design-ui")
+            document.querySelector(".gallery-section.design-ui")
             .style.display = "block";
 
         }
@@ -188,80 +198,3 @@ viewer.addEventListener("click", (e) => {
     }
 
 });
-
-/*
-// =========================
-// COMMENT SYSTEM
-// =========================
-
-const commentInput = document.getElementById("commentInput");
-const commentBtn = document.getElementById("commentBtn");
-const commentList = document.getElementById("commentList");
-
-// Load saved comments
-
-window.addEventListener("DOMContentLoaded", loadComments);
-
-// Add comment
-
-commentBtn.addEventListener("click", () => {
-
-    const commentText = commentInput.value.trim();
-
-    if(commentText === "") return;
-
-    addComment(commentText);
-
-    saveComment(commentText);
-
-    commentInput.value = "";
-
-});
-
-// Add comment to UI
-
-function addComment(text){
-
-    const div = document.createElement("div");
-
-    div.classList.add("comment-item");
-
-    div.innerHTML = `<p>${text}</p>`;
-
-    commentList.prepend(div);
-
-}
-
-// Save to LocalStorage
-
-function saveComment(text){
-
-    let comments =
-        JSON.parse(localStorage.getItem("comments"))
-        || [];
-
-    comments.push(text);
-
-    localStorage.setItem(
-        "comments",
-        JSON.stringify(comments)
-    );
-
-}
-
-// Load comments
-
-function loadComments(){
-
-    let comments =
-        JSON.parse(localStorage.getItem("comments"))
-        || [];
-
-    comments.forEach(comment => {
-
-        addComment(comment);
-
-    });
-
-}
-    */
