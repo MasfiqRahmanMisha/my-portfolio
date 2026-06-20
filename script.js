@@ -198,3 +198,40 @@ viewer.addEventListener("click", (e) => {
     }
 
 });
+
+const contactForm = document.getElementById("contactForm");
+const successMessage = document.getElementById("successMessage");
+
+contactForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const formData = new FormData(contactForm);
+
+    const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData
+    });
+
+    if(response.ok){
+
+        successMessage.innerHTML =
+        "Message sent successfully!";
+
+        successMessage.style.color = "#10b981";
+        successMessage.style.fontWeight = "600";
+        successMessage.style.marginTop = "15px";
+        successMessage.style.marginBottom = "10px";
+
+        contactForm.reset();
+
+    }else{
+
+        successMessage.innerHTML =
+        "Failed to send message.";
+
+        successMessage.style.color = "red";
+
+    }
+
+});
