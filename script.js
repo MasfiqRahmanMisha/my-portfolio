@@ -83,12 +83,10 @@ const tabBtns = document.querySelectorAll(".tab-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const galleries = document.querySelectorAll(".gallery-section");
 
-// ✅ FIX: Page load-এ galleries initially hide করো
 galleries.forEach(gallery => {
     gallery.style.display = "none";
 });
 
-// ✅ FIX: Page load-এ "Full Project" active থাকলে frontend cards দেখাও
 projectCards.forEach(card => {
     if (card.classList.contains("frontend")) {
         card.style.display = "block";
@@ -109,17 +107,14 @@ tabBtns.forEach(btn => {
 
         const filter = btn.dataset.filter;
 
-        // hide all cards
         projectCards.forEach(card => {
             card.style.display = "none";
         });
 
-        // hide all galleries
         galleries.forEach(gallery => {
             gallery.style.display = "none";
         });
 
-        // ✅ Full Project — frontend cards দেখাও
         if (filter === "all" || filter === "frontend") {
 
             projectCards.forEach(card => {
@@ -132,7 +127,6 @@ tabBtns.forEach(btn => {
 
         }
 
-        // ✅ App UI gallery দেখাও
         if (filter === "app-ui") {
 
             document.querySelector(".gallery-section.app-ui")
@@ -140,7 +134,6 @@ tabBtns.forEach(btn => {
 
         }
 
-        // ✅ Normal Design gallery দেখাও
         if (filter === "design-ui") {
 
             document.querySelector(".gallery-section.design-ui")
@@ -152,9 +145,7 @@ tabBtns.forEach(btn => {
 
 });
 
-// =========================
 // IMAGE VIEWER
-// =========================
 
 const viewer =
 document.getElementById("imageViewer");
