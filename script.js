@@ -122,7 +122,7 @@ tabBtns.forEach(btn => {
         // Full Project
         if(filter === "full-project"){
 
-            document.querySelectorAll(".full-project")
+            document.querySelectorAll(".project-card.full-project")
             .forEach(card=>{
                 card.style.display = "block";
             });
