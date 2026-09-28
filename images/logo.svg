@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512"
+     height="512"
+     viewBox="0 0 512 512">
+
+  <!-- M -->
+  <path
+    d="M95 390
+       V120
+       Q95 105 110 105
+       H145
+       L256 245
+       L367 105
+       H402
+       Q417 105 417 120
+       V390
+       H345
+       V220
+       L276 305
+       Q256 330 236 305
+       L167 220
+       V390
+       Z"
+    fill="#d9dce1"/>
+
+  <!-- Blue Full Stop -->
+  <circle
+    cx="445"
+    cy="380"
+    r="28"
+    fill="#4f46e5"/>
+</svg>
