@@ -679,7 +679,6 @@ body{
 .image-viewer img{
     max-width:90%;
     max-height:90%;
-    border-radius:20px;
     animation:zoomIn 0.3s ease;
 }
 
