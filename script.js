@@ -76,23 +76,26 @@ document.querySelectorAll(
 
 });
 
-
 // PROJECT FILTER
 
 const tabBtns = document.querySelectorAll(".tab-btn");
 const projectCards = document.querySelectorAll(".project-card");
 const galleries = document.querySelectorAll(".gallery-section");
 
+// Hide all galleries initially
 galleries.forEach(gallery => {
     gallery.style.display = "none";
 });
 
+// Show Full Project by default
 projectCards.forEach(card => {
-    if (card.classList.contains("frontend")) {
+
+    if(card.classList.contains("full-project")){
         card.style.display = "block";
-    } else {
+    }else{
         card.style.display = "none";
     }
+
 });
 
 tabBtns.forEach(btn => {
@@ -100,13 +103,14 @@ tabBtns.forEach(btn => {
     btn.addEventListener("click", () => {
 
         document
-        .querySelector(".tab-btn.active")
-        .classList.remove("active");
+            .querySelector(".tab-btn.active")
+            .classList.remove("active");
 
         btn.classList.add("active");
 
         const filter = btn.dataset.filter;
 
+        // Hide everything
         projectCards.forEach(card => {
             card.style.display = "none";
         });
@@ -115,26 +119,36 @@ tabBtns.forEach(btn => {
             gallery.style.display = "none";
         });
 
-        if (filter === "all" || filter === "frontend") {
+        // Full Project
+        if(filter === "full-project"){
 
-            projectCards.forEach(card => {
-
-                if (card.classList.contains("frontend")) {
-                    card.style.display = "block";
-                }
-
+            document.querySelectorAll(".full-project")
+            .forEach(card=>{
+                card.style.display = "block";
             });
 
         }
 
-        if (filter === "app-ui") {
+        // System Front End
+        else if(filter === "frontend"){
+
+            document.querySelectorAll(".frontend")
+            .forEach(card=>{
+                card.style.display = "block";
+            });
+
+        }
+
+        // App UI
+        else if(filter === "app-ui"){
 
             document.querySelector(".gallery-section.app-ui")
             .style.display = "block";
 
         }
 
-        if (filter === "design-ui") {
+        // Normal Design
+        else if(filter === "design-ui"){
 
             document.querySelector(".gallery-section.design-ui")
             .style.display = "block";
